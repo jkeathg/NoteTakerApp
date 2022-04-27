@@ -29,6 +29,13 @@ h1 {
     font-weight: bold;
 }
 
+.noteDetail {
+    overflow:hidden;
+    max-width: 20ch;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 footer {
     background-color: #FAF0EA;
     padding: 10px;
