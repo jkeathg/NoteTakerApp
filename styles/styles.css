@@ -40,3 +40,17 @@ footer {
     background-color: #FAF0EA;
     padding: 10px;
 }
+
+.editWindow {
+    position:fixed;
+    top:25%;
+    left:25%;
+    z-index: 100;
+    padding: 15px;
+    background-color: #5c928d;
+    width: 40%;
+    height: 50%;
+    border-style: solid;
+    border-radius: 10px;
+
+}

@@ -30,11 +30,21 @@ noteSubmit.addEventListener('click', () => {
     viewNote.type = 'button';
     viewNote.value = 'View Note';
     viewNote.classList = 'viewNote';
+    const editBtn = document.createElement('input');
+    editBtn.type = 'button';
+    editBtn.value = 'Edit';
+    editBtn.classList = 'editNote';
+    const clrBtn = document.createElement('input');
+    clrBtn.type = 'button';
+    clrBtn.value = 'Clear';
+    clrBtn.classList = 'clrBtn';
 
 
     
     liDiv.appendChild(liNote);
     liDiv.appendChild(viewNote);
+    liDiv.appendChild(editBtn);
+    liDiv.appendChild(clrBtn);
     noteList.appendChild(liDiv);
 
 
@@ -67,3 +77,79 @@ function viewNote(e) {
 
 
 
+
+// remove Note function
+noteList.addEventListener('click', clrLine);
+
+
+function clrLine(e) {
+    // select clicked target
+    const item = e.target;
+    // find if clear btn pressed.
+    if (item.className === 'clrBtn'){
+        // point to parent element and assign variable, remove that element.
+        const clr = item.parentElement;
+        clr.remove();
+    }
+}
+
+
+const editWindow = document.getElementById('noteList');
+let windowText = null;
+
+
+
+// Open edit window, save and cancel
+noteList.addEventListener('click', editLine);
+
+
+function editLine(e) {
+    // select clicked target
+    const item = e.target;
+    // find if clear btn pressed.
+    if (item.className === 'editNote'){
+        // point to parent element and assign variable, remove that element.
+        const noteText = item.parentElement;
+        const noteValue = noteText.children[0].textContent;
+
+        const windowDiv = document.createElement('div');
+        windowDiv.classList = 'editWindow';
+        windowText = document.createElement('textarea');
+        windowText.classList = 'windowText';
+        windowText.appendChild(document.createTextNode(noteValue));
+        const saveBtn = document.createElement('input');
+        saveBtn.type = 'button';
+        saveBtn.value = 'Save';
+        saveBtn.classList = 'saveBtn';
+        const cancelBtn = document.createElement('input');
+        cancelBtn.type = 'button';
+        cancelBtn.value = 'Cancel';
+        cancelBtn.classList = 'cancelBtn';
+
+
+        windowDiv.appendChild(windowText);
+        windowDiv.appendChild(saveBtn);
+        windowDiv.appendChild(cancelBtn);
+        editWindow.append(windowDiv);
+
+        return windowDiv;
+
+    }
+}
+
+
+
+// close window
+editWindow.addEventListener('click', clsWindow);
+
+
+function clsWindow(e) {
+    // select clicked target
+    const item = e.target;
+    // find if clear btn pressed.
+    if (item.className === 'cancelBtn'){
+        // point to parent element and assign variable, remove that element.
+        const clr = item.parentElement;
+        clr.remove();
+    }
+}
